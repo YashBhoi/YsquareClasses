@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Tuition Classes</title>
+
+<style>
+/* ----- Global ----- */
+*{margin:0;padding:0;box-sizing:border-box;font-family: 'Poppins', sans-serif;}
+body{
+  background: linear-gradient(135deg,#0d1b2a,#1b263b,#415a77);
+  color:white;scroll-behavior:smooth;height:100%;
+}
+
+/* ----- Glass Header ----- */
+header{
+  backdrop-filter: blur(10px);
+  background: white;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  padding:15px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:fixed;width:100%;top:0;left:0;z-index:999;
+}
+nav a{
+  margin:0 12px;text-decoration:none;color:rgb(0, 0, 0);font-weight:500;
+  transition:.3s;
+}
+nav a:hover{color:#a4e6ff;}
+.menu-btn{display:none;font-size:26px;cursor:pointer;}
+
+/* ----- Hero ----- */
+.hero{
+  min-height:90vh;display:flex;justify-content:center;align-items:center;
+  text-align:center;flex-direction:column;padding:50px 15px;
+}
+.hero h1{font-size:42px;font-weight:700;animation:fadeUp 1.5s;}
+.hero p{font-size:18px;margin-top:10px;opacity:.9;}
+.btn{
+  margin-top:25px;padding:12px 30px;font-size:16px;border-radius:8px;
+  background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(10px);color:white;text-decoration:none;
+  transition:.3s;font-weight:600;
+}
+.btn:hover{transform:scale(1.07);background:rgba(255,255,255,0.35);}
+
+/* ----- Section ----- */
+.section{
+  padding:110px 30px;text-align:center;width:100%;
+}
+.title{font-size:32px;margin-bottom:15px;}
+.subtitle{font-size:15px;margin-bottom:40px;opacity:.8;}
+
+/* ----- Glass Cards ----- */
+.cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;max-width:950px;margin:auto;
+}
+.card{
+  padding:28px;border-radius:15px;font-weight:bold;transition:.4s;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  backdrop-filter:blur(15px);
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 8px 30px rgba(0,0,0,.4);}
+
+/* ----- Dark Contrast Commerce Section ----- */
+.dark{
+  background:rgba(255,255,255,0.07);
+  border-top:1px solid rgba(255,255,255,0.2);
+  border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+/* ----- Contact ----- */
+.contact .btn{background:rgba(255,255,255,0.3);}
+footer{text-align:center;padding:18px;color:white;margin-top:50px;opacity:.7;}
+
+/* ----- Animations ----- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+/* ----- Responsive Navbar ----- */
+@media(max-width:768px){
+  .menu-btn{display:block;color:white;}
+  nav{
+    display:none;flex-direction:column;text-align:right;
+    position:absolute;right:20px;top:60px;width:160px;
+    background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);
+    border-radius:10px;padding:15px;
+  }
+  nav a{display:block;margin:10px 0;}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <!-- Logo with image -->
+  <div class="logo" style="display:flex;align-items:center;gap:10px;">
+    <img src="og.png" alt="Glass Tuition Logo" style="width: 140px;height:auto;border-radius:6px;mix-blend-mode: multiply;">
+  </div>
+
+  <nav id="navbar">
+    <a href="#home">Home</a>
+    <a href="#std1-10">Std 1-10</a>
+    <a href="#commerce">11 Commerce</a>
+    <a href="#digital">Digital Learning</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
+
+
+<!-- Home -->
+<section id="home" class="hero">
+  <h1>Learn. Grow. Excel.</h1>
+  <p>Premium Coaching | Smart Learning | Regular Tests</p>
+  <a href="#contact" class="btn">Join Now</a>
+</section>
+q
+<!-- 1 to 10 -->
+<section id="std1-10" class="section">
+  <h2 class="title">Standard 1 To 10</h2>
+  <p class="subtitle">Personal Attention | Concept Clearing | NCERT/GBSE</p>
+
+  <div class="cards">
+    <div class="card">Std 1-3 • Basics+Play Method</div>
+    <div class="card">Std 4-5 • Strong Concepts</div>
+    <div class="card">Std 6-8 • Deep Understanding</div>
+    <div class="card">Std 9-10 • High Focus + Tests</div>
+  </div>
+</section>
+
+<!-- Commerce -->
+<section id="commerce" class="section dark">
+  <h2 class="title">11th Commerce</h2>
+  <p class="subtitle">Accounts • Eco • Stats • B.K • English</p>
+
+  <div class="cards">
+    <div class="card">Accounts</div>
+    <div class="card">Economics</div>
+    <div class="card">Statistics</div>
+    <div class="card">Business Knowledge</div>
+    <div class="card">English + More</div>
+  </div>
+</section>
+
+<!-- ******* INSERTED NEW SECTION HERE ******* -->
+
+<section id="digital" class="section">
+  <h2 class="title">Digital Smart Learning System</h2>
+  <p class="subtitle">Technology Powered Learning Experience For Every Student</p>
+
+  <div class="cards">
+    <div class="card">
+      📄 Digital Study Materials<br>
+      <span style="font-weight:normal;opacity:.8;">Notes, PDFs, homework sheets, practice questions — anytime access.</span>
+    </div>
+    <div class="card">
+      📚 Recorded Learning Access<br>
+      <span style="font-weight:normal;opacity:.8;">Missed a lecture? No worry — students can learn anytime.</span>
+    </div>
+    <div class="card">
+      🧾 Attendance Tracking<br>
+      <span style="font-weight:normal;opacity:.8;">Parents & students can monitor attendance live.</span>
+    </div>
+    <div class="card">
+      📊 Test Result Analytics<br>
+      <span style="font-weight:normal;opacity:.8;">Marks breakdown, mistakes, strengths & weakness analysis.</span>
+    </div>
+    <div class="card">
+      🎯 Performance Dashboard<br>
+      <span style="font-weight:normal;opacity:.8;">Track progress, chapter-wise performance & growth graph.</span>
+    </div>
+    <div class="card">
+      🕒 24/7 Access to Learning<br>
+      <span style="font-weight:normal;opacity:.8;">Study anywhere — on phone, tablet or PC.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section contact">
+  <h2 class="title">Contact & Admission</h2>
+  <br>
+  <p>📍 Location: Your Area Here</p>
+  <p>📞 WhatsApp: <a style="color:#a4e6ff" href="https://wa.me/91XXXXXXXXXX">+91 XXXXX XXXXX</a></p>
+  <p>🕒 Timings: 4PM - 9PM</p>
+  <a href="https://wa.me/91XXXXXXXXXX" class="btn">Chat Now</a>
+</section>
+
+<footer>© 2025 Glass Tuition Classes</footer>
+
+<script>
+function toggleMenu(){
+  const nav=document.getElementById("navbar");
+  nav.style.display = nav.style.display==="block"?"none":"block";
+}
+</script>
+
+</body>
+</html>
