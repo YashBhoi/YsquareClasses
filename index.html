@@ -37,18 +37,70 @@ nav a:hover{color:#a4e6ff;}
 
 /* ----- Hero ----- */
 .hero{
-  min-height:90vh;display:flex;justify-content:center;align-items:center;
+  position:relative;
+  min-height:102vh;display:flex;justify-content:center;align-items:center;
   text-align:center;flex-direction:column;padding:50px 15px;
+  overflow:hidden;
 }
-.hero h1{font-size:30px;font-weight:700;animation:fadeUp 1.5s;}
+.hero h1{font-size:32px;font-weight:700;animation:fadeUp 1.5s;}
 .hero p{font-size:14px;margin-top:10px;opacity:.9;}
-.btn{
+
+/* ----- Hero Button ----- */
+.hero .btn{
   margin-top:25px;padding:12px 30px;font-size:16px;border-radius:8px;
   background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,.3);
   backdrop-filter:blur(10px);color:white;text-decoration:none;
   transition:.3s;font-weight:600;
+  position:relative;
+  overflow:hidden;
 }
-.btn:hover{transform:scale(1.07);background:rgba(255,255,255,0.35);}
+.hero .btn:hover{transform:scale(1.07);background:rgba(255,255,255,0.35);}
+.hero .btn::before {
+  content:'';
+  position:absolute;
+  top:0; left:-106%;
+  width:100%; height:100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+  transform: skewX(-20deg);
+  transition: all 0.5s;
+  z-index:0;
+}
+.hero .btn:hover::before {
+  left:200%;
+}
+
+/* Floating bubbles */
+.hero-bg span {
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  animation: float 15s infinite;
+}
+.hero-bg span:nth-child(1){ left:10%; animation-delay:0s;}
+.hero-bg span:nth-child(2){ left:30%; animation-delay:3s;}
+.hero-bg span:nth-child(3){ left:50%; animation-delay:6s;}
+.hero-bg span:nth-child(4){ left:70%; animation-delay:9s;}
+.hero-bg span:nth-child(5){ left:90%; animation-delay:12s;}
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg);}
+  100% { transform: translateY(-100vh) rotate(360deg);}
+}
+
+/* Scroll-down arrow */
+.scroll-down {
+  position: absolute;
+  bottom:40px;
+  font-size:24px;
+  opacity:0.7;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
 
 /* ----- Section ----- */
 .section{
@@ -78,8 +130,24 @@ nav a:hover{color:#a4e6ff;}
   border-bottom:1px solid rgba(255,255,255,0.2);
 }
 
-/* ----- Contact ----- */
-.contact .btn{background:rgba(255,255,255,0.3);}
+/* ----- Contact Buttons ----- */
+.contact .btn{
+  background: rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  border-radius:8px;
+  display:inline-block;
+  padding:12px 25px;
+  border:1px solid rgba(255,255,255,0.3);
+}
+.contact .btn:hover{
+  background: rgba(255,255,255,0.45);
+  transform: scale(1.05);
+}
+
+/* ----- Footer ----- */
 footer{text-align:center;padding:18px;color:white;margin-top:50px;opacity:.7;}
 
 /* ----- Animations ----- */
@@ -102,47 +170,33 @@ footer{text-align:center;padding:18px;color:white;margin-top:50px;opacity:.7;}
   position:fixed;
   bottom:26px;
   right:26px;
-width: 52px;
-    height: 52px;
-    border-radius: 49px; /* Apple glass square */
+  width: 52px;
+  height: 52px;
+  border-radius: 49px; 
   display:flex;
   align-items:center;
   justify-content:center;
-
   background:rgba(255,255,255,0.25);
   backdrop-filter:blur(20px) saturate(180%);
   -webkit-backdrop-filter:blur(20px) saturate(180%);
-
   border:1px solid rgba(255,255,255,0.35);
-
-  box-shadow:
-    0 12px 32px rgba(0,0,0,0.35),
-    inset 0 1px 1px rgba(255,255,255,0.4);
-
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.4);
   z-index:1000;
   transition:all 0.35s ease;
   text-decoration:none;
 }
-
-/* Apple hover feel */
 .whatsapp-glass:hover{
   transform:translateY(-5px) scale(1.06);
-  box-shadow:
-    0 20px 45px rgba(0,0,0,0.45),
-    inset 0 1px 1px rgba(255,255,255,0.5);
+  box-shadow:0 20px 45px rgba(0,0,0,0.45), inset 0 1px 1px rgba(255,255,255,0.5);
 }
-
-
 </style>
 </head>
 
 <body>
 <header>
-  <!-- Logo with image -->
   <div class="logo" style="display:flex;align-items:center;gap:10px;">
     <img src="og.png" alt="Glass Tuition Logo" style="width: 140px;height:auto;border-radius:6px;mix-blend-mode: multiply;">
   </div>
-
   <nav id="navbar">
     <a href="#home">Home</a>
     <a href="#std1-10">Std 1-10</a>
@@ -150,23 +204,22 @@ width: 52px;
     <a href="#digital">Digital Learning</a>
     <a href="#contact">Contact</a>
   </nav>
-
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
-
 <!-- Home -->
 <section id="home" class="hero">
-  <h1>Learn. Grow. Excel.</h1>
+  <div class="hero-bg"><span></span><span></span><span></span><span></span><span></span></div>
+  <h1>Learn. <span id="dynamic-text">Grow.</span> Excel.</h1>
   <p>Better Coaching | Smart Learning | Regular Tests</p>
   <a href="#contact" class="btn">Join Now</a>
+  <div class="scroll-down">&#8595;</div>
 </section>
 
-<!-- 1 to 10 -->
+<!-- Std 1-10 -->
 <section id="std1-10" class="section">
   <h2 class="title">Standard 1 To 10</h2>
   <p class="subtitle">Personal Attention | Concept Clearing | NCERT/GBSE</p>
-
   <div class="cards">
     <div class="card">Std 1-3 • Basics+Play Method</div>
     <div class="card">Std 4-5 • Strong Concepts</div>
@@ -179,7 +232,6 @@ width: 52px;
 <section id="commerce" class="section dark">
   <h2 class="title">11th/12th Commerce</h2>
   <p class="subtitle">Accounts • Eco • Stats • B.K • English</p>
-
   <div class="cards">
     <div class="card">Accounts</div>
     <div class="card">Economics</div>
@@ -187,41 +239,20 @@ width: 52px;
     <div class="card">Business Knowledge</div>
     <div class="card">English</div>
     <div class="card">+ More</div>
-
   </div>
 </section>
 
-<!-- ******* INSERTED NEW SECTION HERE ******* -->
-
+<!-- Digital -->
 <section id="digital" class="section">
   <h2 class="title">Digital Smart Learning System</h2>
   <p class="subtitle">Technology Powered Learning Experience For Every Student</p>
-
   <div class="cards">
-    <div class="card">
-      📄 Digital Study Materials<br>
-      <span style="font-weight:normal;opacity:.8;">Notes, PDFs, homework sheets, practice questions — anytime access.</span>
-    </div>
-    <div class="card">
-      📚 Recorded Learning Access<br>
-      <span style="font-weight:normal;opacity:.8;">Missed a lecture? No worry — students can learn anytime.</span>
-    </div>
-    <div class="card">
-      🧾 Attendance Tracking<br>
-      <span style="font-weight:normal;opacity:.8;">Parents & students can monitor attendance live.</span>
-    </div>
-    <div class="card">
-      📊 Test Result Analytics<br>
-      <span style="font-weight:normal;opacity:.8;">Marks breakdown, mistakes, strengths & weakness analysis.</span>
-    </div>
-    <div class="card">
-      🎯 Performance Dashboard<br>
-      <span style="font-weight:normal;opacity:.8;">Track progress, chapter-wise performance & growth graph.</span>
-    </div>
-    <div class="card">
-      🕒 24/7 Access to Learning<br>
-      <span style="font-weight:normal;opacity:.8;">Study anywhere — on phone, tablet or PC.</span>
-    </div>
+    <div class="card">📄 Digital Study Materials<br><span style="font-weight:normal;opacity:.8;">Notes, PDFs, homework sheets, practice questions — anytime access.</span></div>
+    <div class="card">📚 Recorded Learning Access<br><span style="font-weight:normal;opacity:.8;">Missed a lecture? No worry — students can learn anytime.</span></div>
+    <div class="card">🧾 Attendance Tracking<br><span style="font-weight:normal;opacity:.8;">Parents & students can monitor attendance live.</span></div>
+    <div class="card">📊 Test Result Analytics<br><span style="font-weight:normal;opacity:.8;">Marks breakdown, mistakes, strengths & weakness analysis.</span></div>
+    <div class="card">🎯 Performance Dashboard<br><span style="font-weight:normal;opacity:.8;">Track progress, chapter-wise performance & growth graph.</span></div>
+    <div class="card">🕒 24/7 Access to Learning<br><span style="font-weight:normal;opacity:.8;">Study anywhere — on phone, tablet or PC.</span></div>
   </div>
 </section>
 
@@ -229,94 +260,61 @@ width: 52px;
 <section id="contact" class="section contact">
   <h2 class="title">Contact & Admission</h2>
   <p class="subtitle">Call • WhatsApp • Email • Visit Nearest Branch</p>
-
   <div class="cards">
-
-    <!-- WhatsApp -->
-    <div class="card">
-      📲 WhatsApp<br><br>
-      <a class="btn" href="https://wa.me/918488084859" target="_blank">
-        Chat on WhatsApp
-      </a>
-    </div>
-
-    <!-- Call -->
-    <div class="card">
-      📞 Call Us<br><br>
-      <a class="btn" href="tel:+918488084859">
-        +91 84880 84859
-      </a>
-    </div>
-
-    <!-- Email -->
-    <div class="card">
-      📧 Email<br><br>
-      <a class="btn" href="mailto:ysquareclasses@gmail.com">
-        ysquareclasses@gmail.com
-      </a>
-    </div>
-
-    <!-- Timings -->
-    <div class="card">
-      🕒 Class Timings<br><br>
-      <span style="font-weight:normal;opacity:.9;">
-        Monday – Saturday<br>
-        01:00 PM – 08:00 PM
-      </span>
-    </div>
-
+    <div class="card">📲 WhatsApp<br><br><a class="btn" href="https://wa.me/918488084859" target="_blank">Chat on WhatsApp</a></div>
+    <div class="card">📞 Call Us<br><br><a class="btn" href="tel:+918488084859">+91 84880 84859</a></div>
+    <div class="card">📧 Email<br><br><a class="btn" href="mailto:ysquareclasses@gmail.com">ysquareclasses@gmail.com</a></div>
+    <div class="card">🕒 Class Timings<br><br><span style="font-weight:normal;opacity:.9;">Monday – Saturday<br>01:00 PM – 08:00 PM</span></div>
   </div>
 
-  <!-- Google Map -->
   <div style="margin-top:50px;max-width:1000px;margin-left:auto;margin-right:auto;">
     <h3 style="margin-bottom:15px;">📍 Our Locations</h3>
-
-    <!-- MULTI LOCATION MAP -->
-   <!-- Map with Clean Overlay -->
-<div style="position:relative;max-width:1000px;margin:auto;">
-
-  <iframe
-    src="https://www.google.com/maps/d/u/0/embed?mid=1q73TxpfmIMW0YX50Q1Nex__k65OBDbE&ehbc=2E312F&noprof=1"
-    width="100%"
-    height="380"
-    style="border-radius:15px;border:0;"
-    loading="lazy">
-  </iframe>
-
-  
-</div>
-
-    <p style="margin-top:15px;opacity:.8;font-size:14px;">
-      Available at: <br>
-       Miroli • Pirana • Jetalpur • Nearby Areas
-    </p>
+    <div style="position:relative;max-width:1000px;margin:auto;">
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1q73TxpfmIMW0YX50Q1Nex__k65OBDbE&ehbc=2E312F&noprof=1" width="100%" height="380" style="border-radius:15px;border:0;" loading="lazy"></iframe>
+    </div>
+    <p style="margin-top:15px;opacity:.8;font-size:14px;">Available at: <br>Miroli • Pirana • Jetalpur • Nearby Areas</p>
   </div>
-
 </section>
 
 <footer>© 2025 Ysquare Classes. All rights reserved. </footer>
 
-<!-- Apple Glass WhatsApp Button -->
-<a href="https://wa.me/918488084859"
-   target="_blank"
-   class="whatsapp-glass"
-   aria-label="Chat on WhatsApp">
-
-  <!-- FULL WhatsApp LOGO -->
+<!-- WhatsApp Button -->
+<a href="https://wa.me/918488084859" target="_blank" class="whatsapp-glass" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 32 32" width="34" height="34">
     <path fill="#25D366" d="M16.01 2.002C8.28 2.002 2 8.28 2 16.01c0 2.82.84 5.45 2.29 7.65L2 30l6.52-2.2c2.13 1.17 4.58 1.79 7.49 1.79 7.73 0 14.01-6.28 14.01-14.01S23.74 2.002 16.01 2.002z"/>
     <path fill="#ffffff" d="M22.34 18.87c-.35-.18-2.06-1.01-2.38-1.12-.32-.12-.55-.18-.78.18-.23.35-.9 1.12-1.1 1.35-.2.23-.41.26-.76.09-.35-.18-1.48-.55-2.82-1.76-1.04-.93-1.74-2.08-1.94-2.43-.2-.35-.02-.54.15-.72.16-.16.35-.41.52-.61.17-.2.23-.35.35-.58.12-.23.06-.44-.03-.61-.09-.18-.78-1.88-1.07-2.58-.28-.67-.57-.58-.78-.59l-.67-.01c-.23 0-.61.09-.93.44-.32.35-1.22 1.19-1.22 2.9s1.25 3.37 1.42 3.6c.18.23 2.45 3.74 5.93 5.24.83.36 1.48.57 1.98.73.83.26 1.59.22 2.19.13.67-.1 2.06-.84 2.35-1.65.29-.81.29-1.51.2-1.65-.08-.14-.32-.23-.67-.41z"/>
   </svg>
-
 </a>
-
-
 
 <script>
 function toggleMenu(){
   const nav=document.getElementById("navbar");
   nav.style.display = nav.style.display==="block"?"none":"block";
 }
+
+// Dynamic typing effect
+const words = ["Grow.", "Achieve.", "Succeed."];
+let i = 0, j = 0;
+let currentWord = '';
+let isDeleting = false;
+const speed = 150;
+function type() {
+  const dynamicText = document.getElementById('dynamic-text');
+  if(i >= words.length) i = 0;
+  if(!isDeleting){
+    currentWord = words[i].substring(0,j+1);
+    j++;
+    dynamicText.textContent = currentWord;
+    if(j === words[i].length) { isDeleting = true; setTimeout(type, 1000); return; }
+  } else {
+    currentWord = words[i].substring(0,j-1);
+    j--;
+    dynamicText.textContent = currentWord;
+    if(j === 0) { isDeleting = false; i++; }
+  }
+  setTimeout(type, speed);
+}
+type();
 </script>
 
 </body>
