@@ -42,7 +42,7 @@ nav a:hover{color:#a4e6ff;}
   text-align:center;flex-direction:column;padding:50px 15px;
   overflow:hidden;
 }
-.hero h1{font-size:30px;font-weight:700;animation:fadeUp 1.5s;}
+.hero h1{font-size:32px;font-weight:700;animation:fadeUp 1.5s;}
 .hero p{font-size:14px;margin-top:10px;opacity:.9;}
 
 /* ----- Hero Button ----- */
@@ -122,6 +122,104 @@ nav a:hover{color:#a4e6ff;}
   backdrop-filter:blur(15px);
 }
 .card:hover{transform:translateY(-8px);box-shadow:0 8px 30px rgba(0,0,0,.4);}
+
+/* ----- Testimonials ----- */
+.testimonial-card{
+  text-align:center;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card img{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:12px;
+  border:2px solid rgba(255,255,255,0.6);
+}
+.testimonial-card h4{
+  margin-bottom:6px;
+  font-size:16px;
+}
+.testimonial-card p{
+  font-size:14px;
+  font-weight:normal;
+  opacity:.85;
+}
+.stars{
+  color:#ffd369;
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+/* ----- Testimonial Horizontal Scroll (3 visible) ----- */
+.testimonial-scroll{
+  display:flex;
+  gap:25px;
+  max-width:950px;
+  margin:auto;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:12px;
+}
+
+/* scrollbar */
+.testimonial-scroll::-webkit-scrollbar{
+  height:6px;
+}
+.testimonial-scroll::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,0.3);
+  border-radius:10px;
+}
+
+/* card sizing */
+.testimonial-scroll .testimonial-card{
+  min-width:300px;
+  max-width:300px;
+  scroll-snap-align:start;
+}
+
+/* 🔥 Focus effect (NO movement) */
+.testimonial-scroll:hover .testimonial-card{
+  opacity:0.4;
+}
+
+.testimonial-scroll .testimonial-card:hover{
+  opacity:1;
+  box-shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+
+/* ----- Testimonial Wrapper & Arrows ----- */
+.testimonial-wrapper{
+  position:relative;
+  max-width:950px;
+  margin:auto;
+}
+
+.testi-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.4);
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(10px);
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+  z-index:5;
+}
+.testi-arrow:hover{
+  background:rgba(255,255,255,0.4);
+}
+
+.testi-left{left:-18px;}
+.testi-right{right:-18px;}
+
+
+
 
 /* ----- Dark Contrast Commerce Section ----- */
 .dark{
@@ -247,12 +345,64 @@ footer{text-align:center;padding:18px;color:white;margin-top:50px;opacity:.7;}
   <h2 class="title">Digital Smart Learning System</h2>
   <p class="subtitle">Technology Powered Learning Experience For Every Student</p>
   <div class="cards">
-    <div class="card">📄 Digital Study Materials<br><span style="font-weight:normal;opacity:.8;">Notes, PDFs, homework sheets, practice questions — anytime access.</span></div>
-    <div class="card">📚 Recorded Learning Access<br><span style="font-weight:normal;opacity:.8;">Missed a lecture? No worry — students can learn anytime.</span></div>
-    <div class="card">🧾 Attendance Tracking<br><span style="font-weight:normal;opacity:.8;">Parents & students can monitor attendance live.</span></div>
-    <div class="card">📊 Test Result Analytics<br><span style="font-weight:normal;opacity:.8;">Marks breakdown, mistakes, strengths & weakness analysis.</span></div>
-    <div class="card">🎯 Performance Dashboard<br><span style="font-weight:normal;opacity:.8;">Track progress, chapter-wise performance & growth graph.</span></div>
-    <div class="card">🕒 24/7 Access to Learning<br><span style="font-weight:normal;opacity:.8;">Study anywhere — on phone, tablet or PC.</span></div>
+    <div class="card">Digital Study Materials<br><span style="font-weight:normal;opacity:.8;">Notes, PDFs, homework sheets, practice questions — anytime access.</span></div>
+    <div class="card">Recorded Learning Access<br><span style="font-weight:normal;opacity:.8;">Missed a lecture? No worry — students can learn anytime.</span></div>
+    <div class="card">Attendance Tracking<br><span style="font-weight:normal;opacity:.8;">Parents & students can monitor attendance live.</span></div>
+    <div class="card">Test Result Analytics<br><span style="font-weight:normal;opacity:.8;">Marks breakdown, mistakes, strengths & weakness analysis.</span></div>
+    <div class="card">Performance Dashboard<br><span style="font-weight:normal;opacity:.8;">Track progress, chapter-wise performance & growth graph.</span></div>
+    <div class="card">24/7 Access to Learning<br><span style="font-weight:normal;opacity:.8;">Study anywhere — on phone, tablet or PC.</span></div>
+  </div>
+</section>
+
+<section id="testimonials" class="section dark">
+  <h2 class="title">What Parents & Students Say</h2>
+  <p class="subtitle">Swipe or use arrows →</p>
+
+  <div class="testimonial-wrapper">
+
+    <button class="testi-arrow testi-left" onclick="scrollTesti(-1)">‹</button>
+    <button class="testi-arrow testi-right" onclick="scrollTesti(1)">›</button>
+
+    <div class="testimonial-scroll" id="testiScroll">
+
+      <!-- KEEP YOUR SAME 5 CARDS BELOW (unchanged) -->
+
+      <div class="card testimonial-card">
+        <img src="assest/images/Shorya_Dabhi.jpg">
+        <h4>Shorya Dabhi</h4>
+        <div class="stars">★★★★★</div>
+        <p>Teachers explain concepts very clearly and patiently.</p>
+      </div>
+
+      <div class="card testimonial-card">
+        <img src="assest/images/Mayansh.jpg">
+        <h4>Mayansh</h4>
+        <div class="stars">★★★★★</div>
+        <p>Excellent teaching method and regular tests.</p>
+      </div>
+
+      <div class="card testimonial-card">
+        <img src="assest/images/Shaurya_Desai.jpg">
+        <h4>Shaurya Desai</h4>
+        <div class="stars">★★★★☆</div>
+        <p>Recorded lectures and digital system are very helpful.</p>
+      </div>
+
+      <div class="card testimonial-card">
+        <img src="assest/images/Mayansh.jpg">
+        <h4>Mayansh</h4>
+        <div class="stars">★★★★★</div>
+        <p>Confidence improved a lot within few months.</p>
+      </div>
+
+      <div class="card testimonial-card">
+        <img src="assest/images/Mayansh.jpg">
+        <h4>Mayansh</h4>
+        <div class="stars">★★★★★</div>
+        <p>Best coaching for board preparation.</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -268,7 +418,7 @@ footer{text-align:center;padding:18px;color:white;margin-top:50px;opacity:.7;}
   </div>
 
   <div style="margin-top:50px;max-width:1000px;margin-left:auto;margin-right:auto;">
-    <h3 style="margin-bottom:15px;">📍 Our Locations</h3>
+    <h3 style="margin-bottom:15px;">Our Locations</h3>
     <div style="position:relative;max-width:1000px;margin:auto;">
       <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1q73TxpfmIMW0YX50Q1Nex__k65OBDbE&ehbc=2E312F&noprof=1" width="100%" height="380" style="border-radius:15px;border:0;" loading="lazy"></iframe>
     </div>
@@ -316,6 +466,34 @@ function type() {
 }
 type();
 </script>
+
+<script>
+const testi = document.getElementById("testiScroll");
+let autoScroll;
+
+/* Arrow control */
+function scrollTesti(dir){
+  testi.scrollBy({ left: dir * 320, behavior: "smooth" });
+}
+
+/* Auto scroll */
+function startAutoScroll(){
+  autoScroll = setInterval(() => {
+    if (testi.scrollLeft + testi.clientWidth >= testi.scrollWidth - 10) {
+      testi.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      testi.scrollBy({ left: 320, behavior: "smooth" });
+    }
+  }, 3500);
+}
+
+/* Pause on hover */
+testi.addEventListener("mouseenter", () => clearInterval(autoScroll));
+testi.addEventListener("mouseleave", startAutoScroll);
+
+startAutoScroll();
+</script>
+
 
 </body>
 </html>
