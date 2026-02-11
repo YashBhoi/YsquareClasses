@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YSquare Classes | Activities</title>
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  background: #ffffff;
+}
+
+/* HERO SECTION */
+.activities-hero {
+  position: relative;
+  height: 100vh;
+  background: url('./assest/images/covact.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 750px;
+  z-index: 2;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 14px 30px;
+  background: #f7b500;
+  color: #000;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #ffd84d;
+  transform: scale(1.05);
+}
+
+/* GENERAL SECTION */
+.section {
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2.3rem;
+  color: #1e3a8a;
+}
+
+/* ACTIVITY GRID */
+.activity-section {
+  background: #f9fafc;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.activity-card {
+  background: #fff;
+  padding: 35px 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.4s;
+}
+
+.activity-card:hover {
+  transform: translateY(-10px);
+}
+
+.activity-card .icon {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.activity-card h3 {
+  margin-bottom: 10px;
+  color: #1e3a8a;
+}
+
+.activity-card p {
+  color: #555;
+}
+
+/* TIMELINE */
+.timeline-section {
+  background: #ffffff;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  border-left: 3px solid #1e3a8a;
+}
+
+.timeline-item {
+  margin-bottom: 50px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 5px;
+  width: 22px;
+  height: 22px;
+  background: #f7b500;
+  border-radius: 50%;
+  border: 3px solid #1e3a8a;
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+}
+
+.timeline-content h3 {
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  color: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+
+
+
+/* ========================= */
+/* MOBILE OPTIMIZATION */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  /* HERO SECTION */
+  .activities-hero {
+    height: 50vh;
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+    line-height: 1.3;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .hero-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+
+  /* SECTION SPACING */
+  .section {
+    padding: 60px 15px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+  }
+
+  /* ACTIVITY GRID */
+  .activity-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .activity-card {
+    padding: 25px 20px;
+  }
+
+  .activity-card .icon {
+    font-size: 2.2rem;
+  }
+
+  .activity-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .activity-card p {
+    font-size: 0.95rem;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    margin-left: 10px;
+    border-left: 2px solid #1e3a8a;
+  }
+
+  .timeline-item {
+    padding-left: 18px;
+    margin-bottom: 35px;
+  }
+
+  .timeline-item::before {
+    left: -9px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .timeline-date {
+    font-size: 0.95rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.95rem;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="activities-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Learning Beyond Books</h1>
+    <p>At YSquare Classes, we believe in all-round development through competitions, events, and creative activities.</p>
+    <a href="#categories" class="hero-btn">Explore Activities</a>
+  </div>
+</section>
+
+<!-- ACTIVITY CATEGORY SECTION -->
+<section id="categories" class="section activity-section">
+  <div class="container">
+    <h2 class="section-title">Our Activity Categories</h2>
+
+    <div class="activity-grid">
+
+      <div class="activity-card">
+        <div class="icon">🎨</div>
+        <h3>Drawing Competition</h3>
+        <p>Students showcase creativity and artistic skills through exciting competitions.</p>
+      </div>
+
+      <div class="activity-card">
+        <div class="icon">🧠</div>
+        <h3>Quiz & GK Contest</h3>
+        <p>Monthly knowledge competitions to boost confidence and learning.</p>
+      </div>
+
+      <div class="activity-card">
+        <div class="icon">🎤</div>
+        <h3>Public Speaking</h3>
+        <p>Helping students overcome stage fear and improve communication skills.</p>
+      </div>
+
+      <div class="activity-card">
+        <div class="icon">🧪</div>
+        <h3>Science Activities</h3>
+        <p>Hands-on experiments that make learning fun and interactive.</p>
+      </div>
+
+      <div class="activity-card">
+        <div class="icon">🏆</div>
+        <h3>Prize Distribution</h3>
+        <p>Recognizing and rewarding students for their hard work and achievements.</p>
+      </div>
+
+      <div class="activity-card">
+        <div class="icon">🎉</div>
+        <h3>Festival Celebrations</h3>
+        <p>Celebrating cultural events to build values and unity among students.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section class="section timeline-section">
+  <div class="container">
+    <h2 class="section-title">Our Journey So Far</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-content">
+          <h3>Grand Drawing Competition</h3>
+          <p>Over 150+ students participated and won exciting prizes.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-content">
+          <h3>Annual Prize Distribution</h3>
+          <p>Celebrating academic excellence and student achievements.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-content">
+          <h3>Republic Day Celebration</h3>
+          <p>Patriotic performances and engaging cultural activities.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-content">
+          <h3>Science Activity Week</h3>
+          <p>Interactive experiments and innovation-focused sessions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
